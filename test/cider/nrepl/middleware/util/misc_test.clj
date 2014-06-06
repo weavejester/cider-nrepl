@@ -1,6 +1,6 @@
 (ns cider.nrepl.middleware.util.misc-test
-  (:require [clojure.test :refer :all]
-            [cider.nrepl.middleware.util.misc :as misc]))
+  (:use clojure.test)
+  (:require [cider.nrepl.middleware.util.misc :as misc]))
 
 (deftest test-transform-value
   (is (= (misc/transform-value (array-map

@@ -1,7 +1,7 @@
 (ns cider.nrepl.middleware.util.java-test
-  (:require [cider.nrepl.middleware.util.java :refer :all]
-            [clojure.test :refer :all]
-            [clojure.java.io :as io]))
+  (:use cider.nrepl.middleware.util.java
+        clojure.test)
+  (:require [clojure.java.io :as io]))
 
 (deftest test-source-info
   (let [resolve-src (comp (fnil io/resource "-none-") :file source-info)]
@@ -65,7 +65,7 @@
       (testing "member info"
         (is (map? (:members c1)))
         (is (every? map? (vals (:members c1))))
-        (is (apply (every-pred :name :modifiers)
+        (is (apply (every-pred :name)
                    (mapcat vals (vals (:members c1))))))
       (testing "that doesn't exist"
         (is (nil? c3))))))

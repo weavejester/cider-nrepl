@@ -1,11 +1,11 @@
 (ns cider.nrepl.middleware.inspect
+  (:use [clojure.tools.nrepl.middleware.session :only [session]]
+        [clojure.tools.nrepl.middleware :only [set-descriptor!]]
+        [clojure.tools.nrepl.misc :only [response-for]])
   (:require [cider.nrepl.middleware.util.inspect :as inspect]
             [clojure.tools.namespace.find :as nsf]
             [clojure.java.classpath :as cp]
-            [clojure.tools.nrepl.transport :as transport]
-            [clojure.tools.nrepl.middleware.session :refer [session]]
-            [clojure.tools.nrepl.middleware :refer [set-descriptor!]]
-            [clojure.tools.nrepl.misc :refer [response-for]]))
+            [clojure.tools.nrepl.transport :as transport]))
 
 ;; I'm not sure if I should be hard-coding the decision to inspect the
 ;; var for macros and functions. Yet, in my opinion, the vars have

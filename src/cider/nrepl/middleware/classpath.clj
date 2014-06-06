@@ -1,8 +1,8 @@
 (ns cider.nrepl.middleware.classpath
+  (:use [clojure.tools.nrepl.middleware :only [set-descriptor!]]
+        [clojure.tools.nrepl.misc :only [response-for]])
   (:require [clojure.java.classpath :as cp]
-            [clojure.tools.nrepl.transport :as transport]
-            [clojure.tools.nrepl.middleware :refer [set-descriptor!]]
-            [clojure.tools.nrepl.misc :refer [response-for]]))
+            [clojure.tools.nrepl.transport :as transport]))
 
 (defn classpath []
   (map str (cp/classpath)))

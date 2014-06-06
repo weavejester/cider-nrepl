@@ -97,12 +97,12 @@
 (extend-protocol Reflected
   Constructor
   (reflect-info [c]
-    {:argtypes (mapv typesym (:parameter-types c))
+    {:argtypes (vec (map typesym (:parameter-types c)))
      :throws (map typesym (:exception-types c))})
 
   Method
   (reflect-info [m]
-    {:argtypes (mapv typesym (:parameter-types m))
+    {:argtypes (vec (map typesym (:parameter-types m)))
      :throws (map typesym (:exception-types m))
      :returns (typesym (:return-type m))})
 

@@ -1,4 +1,6 @@
 (ns cider.nrepl.middleware.info
+  (:use [clojure.tools.nrepl.middleware :only [set-descriptor!]]
+        [clojure.tools.nrepl.misc :only [response-for]])
   (:require [clojure.string :as s]
             [clojure.java.io :as io]
             [cider.nrepl.middleware.util.cljs :as cljs]
@@ -6,9 +8,7 @@
             [cider.nrepl.middleware.util.misc :as u]
             [clojure.repl :as repl]
             [cljs-tooling.info :as cljs-info]
-            [clojure.tools.nrepl.transport :as transport]
-            [clojure.tools.nrepl.middleware :refer [set-descriptor!]]
-            [clojure.tools.nrepl.misc :refer [response-for]]))
+            [clojure.tools.nrepl.transport :as transport]))
 
 (defn maybe-protocol
   [info]

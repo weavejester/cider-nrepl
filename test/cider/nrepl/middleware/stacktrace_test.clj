@@ -1,6 +1,6 @@
 (ns cider.nrepl.middleware.stacktrace-test
-  (:require [cider.nrepl.middleware.stacktrace :refer :all]
-            [clojure.test :refer :all]))
+  (:use cider.nrepl.middleware.stacktrace
+        clojure.test))
 
 ;; # Utils
 
@@ -90,5 +90,6 @@
     (is (= 1 (count causes2))))
   (testing "Exception data"
     ;; If ex-data is present, the cause should have a :data attribute.
-    (is (:data (first causes1)))
-    (is (not (:data (first causes2))))))
+    (when (find-var 'clojure.core/ex-data)
+      (is (:data (first causes1)))
+      (is (not (:data (first causes2)))))))

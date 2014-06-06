@@ -1,8 +1,8 @@
 (ns cider.nrepl.middleware.complete
+  (:use [clojure.tools.nrepl.middleware :only [set-descriptor!]]
+        [clojure.tools.nrepl.misc :only [response-for]])
   (:require [clojure.string :as s]
             [clojure.tools.nrepl.transport :as transport]
-            [clojure.tools.nrepl.middleware :refer [set-descriptor!]]
-            [clojure.tools.nrepl.misc :refer [response-for]]
             [cider.nrepl.middleware.util.cljs :as cljs]
             [cider.nrepl.middleware.util.misc :as u]
             [compliment.core :as jvm-complete]

@@ -200,13 +200,13 @@
   ConstructorDoc
   (parse-info [c]
     {:name (-> c .qualifiedName symbol)
-     :argtypes (mapv #(-> % .type typesym) (.parameters c))
-     :argnames (mapv #(-> % .name symbol) (.parameters c))})
+     :argtypes (vec (map #(-> % .type typesym) (.parameters c)))
+     :argnames (vec (map #(-> % .name symbol) (.parameters c)))})
 
   MethodDoc
   (parse-info [m]
-    {:argtypes (mapv #(-> % .type typesym) (.parameters m))
-     :argnames (mapv #(-> % .name symbol) (.parameters m))})
+    {:argtypes (vec (map #(-> % .type typesym) (.parameters m)))
+     :argnames (vec (map #(-> % .name symbol) (.parameters m)))})
 
   FieldDoc
   (parse-info [f])

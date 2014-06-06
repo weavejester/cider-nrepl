@@ -1,13 +1,13 @@
 (ns cider.nrepl.middleware.stacktrace
   "Cause and stacktrace analysis for exceptions"
   {:author "Jeff Valk"}
+  (:use [clojure.tools.nrepl.middleware :only [set-descriptor!]]
+        [clojure.tools.nrepl.middleware.pr-values :only [pr-values]]
+        [clojure.tools.nrepl.middleware.session :only [session]]
+        [clojure.tools.nrepl.misc :only [response-for]])
   (:require [clojure.pprint :as pp]
             [clojure.repl :as repl]
             [clojure.string :as str]
-            [clojure.tools.nrepl.middleware :refer [set-descriptor!]]
-            [clojure.tools.nrepl.middleware.pr-values :refer [pr-values]]
-            [clojure.tools.nrepl.middleware.session :refer [session]]
-            [clojure.tools.nrepl.misc :refer [response-for]]
             [clojure.tools.nrepl.transport :as t])
   (:import (clojure.lang Compiler$CompilerException)))
 
@@ -95,6 +95,9 @@
 
 
 ;;; ## Causes
+
+(when-not (find-var 'clojure.core/ex-data)
+  (eval '(defn ex-data [ex] nil)))
 
 (defn analyze-causes
   "Return the cause chain, beginning with the thrown exception, or, if the
