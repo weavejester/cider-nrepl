@@ -4,7 +4,7 @@
                        (alter-var-root #'cider-nrepl.plugin/version
                                        (constantly (constantly ~VERSION)))))
 
-(defproject cider/cider-nrepl VERSION
+(defproject weavejester/cider-nrepl VERSION
   :description "nREPL middleware for CIDER"
   :url "https://github.com/clojure-emacs/cider-nrepl"
   :license {:name "Eclipse Public License"
