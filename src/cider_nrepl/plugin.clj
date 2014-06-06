@@ -4,7 +4,7 @@
 ;; Keep in sync with VERSION-FORM in project.clj
 (defn- version
   []
-  (let [v (-> (io/resource "META-INF/leiningen/cider/cider-nrepl/project.clj")
+  (let [v (-> (io/resource "META-INF/leiningen/weavejester/cider-nrepl/project.clj")
               slurp
               read-string
               (nth 2))]
@@ -18,7 +18,7 @@
   (-> project
       (update-in [:dependencies]
                  (fnil into [])
-                 [['cider/cider-nrepl (version)]])
+                 [['weavejester/cider-nrepl (version)]])
       (update-in [:repl-options :nrepl-middleware]
                  (fnil into [])
                  '[cider.nrepl.middleware.classpath/wrap-classpath
